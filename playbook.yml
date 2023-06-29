@@ -453,6 +453,3 @@
       omero.server.nodedescriptors: "master:Blitz-0,Indexer-0,Processor-0,Storm,Tables-0"
 
     external_nic: "{{ ansible_default_ipv4.interface }}"
-
-- include: letsencrypt.yml
-- include: idr_data.yml
