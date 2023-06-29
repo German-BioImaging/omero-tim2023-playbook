@@ -198,56 +198,6 @@
         group: "omero-server"
         force: yes
 
-    - name: Download the Figure_Images_To_Dataset.py script
-      become: yes
-      get_url:
-        url: https://raw.githubusercontent.com/ome/omero-guide-figure/f45f733a16852ae8b3c52ec93aef480d26b8e9f9/scripts/Figure_Images_To_Dataset.py
-        dest: /opt/omero/server/OMERO.server/lib/scripts/omero/figure_scripts/Figure_Images_To_Dataset.py
-        mode: 0755
-        owner: "omero-server"
-        group: "omero-server"
-        force: yes
-
-    - name: Create a workshop_scripts directory
-      become: yes
-      file:
-        path: /opt/omero/server/OMERO.server/lib/scripts/omero/workshop_scripts
-        state: directory
-        mode: 0755
-        recurse: yes
-        owner: "omero-server"
-        group: "omero-server"
-
-    - name: Download the Scipy_Gaussian_Filter.py script
-      become: yes
-      get_url:
-        url: https://raw.githubusercontent.com/ome/omero-guide-python/v{{ ome_training_scripts_release }}/scripts/scipy_gaussian_filter.py
-        dest: /opt/omero/server/OMERO.server/lib/scripts/omero/workshop_scripts/Scipy_Gaussian_Filter.py
-        mode: 0755
-        owner: "omero-server"
-        group: "omero-server"
-        force: yes
-
-    - name: Download the simple_frap.py script
-      become: yes
-      get_url:
-        url: https://raw.githubusercontent.com/ome/omero-guide-python/v{{ ome_training_scripts_release }}/scripts/simple_frap.py
-        dest: /opt/omero/server/OMERO.server/lib/scripts/omero/workshop_scripts/simple_frap.py
-        mode: 0755
-        owner: "omero-server"
-        group: "omero-server"
-        force: yes
-
-    - name: Download the simple_frap_with_figure.py script
-      become: yes
-      get_url:
-        url: https://raw.githubusercontent.com/ome/omero-guide-python/v{{ ome_training_scripts_release }}/scripts/simple_frap_with_figure.py
-        dest: /opt/omero/server/OMERO.server/lib/scripts/omero/workshop_scripts/simple_frap_with_figure.py
-        mode: 0755
-        owner: "omero-server"
-        group: "omero-server"
-        force: yes
-
     - name: Add DropBox folder for trainer-1
       become: yes
       file:
@@ -410,7 +360,6 @@
       - "omero-webtagging-autotag=={{ omero_webtagging_autotag_release }}"
       - "omero-webtagging-tagsearch=={{ omero_webtagging_tagsearch_release }}"
 
-    ome_training_scripts_release: "{{ ome_training_scripts_release_override | default('0.2.0') }}"
     omero_webtagging_autotag_release: "{{ omero_webtagging_autotag_release_override | default('3.2.0') }}"
     omero_webtagging_tagsearch_release: "{{ omero_webtagging_tagsearch_release_override | default('3.2.0') }}"
     omero_cli_duplicate_release: "{{ omero_cli_duplicate_release_override | default('0.4.0') }}"
