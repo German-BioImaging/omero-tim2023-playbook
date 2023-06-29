@@ -88,8 +88,6 @@
         - '$'
         - gallery-api/
         - gallery_settings/
-        - cell/
-        - tissue/
         - webclient/(?!({{ idr_omero_web_public_url_filters_webclient_exclude | join('|') }}))
         - webgateway/(?!(archived_files|download_as))
       omero_web_python_addons:
@@ -113,7 +111,6 @@
           - ["Help", "https://help.openmicroscopy.org/", {"title": "Open OMERO user guide in a new tab", "target": "new"}]
           - ["Figure", "figure_index", {"title": "Open Figure in new tab", "target": "_blank"}]
           - ["Tag Search", "tagsearch"]
-          - ["Genes", {"query_string": {"experimenter": -1}, "viewname": "maprindex_gene"}, {"title": "Find Gene annotations"}]
           - ["Key-Value", {"viewname": "maprindex_keyvalue"}, {"title": "Search for manually-added Key-Value pairs"}]
         omero.web.open_with:
           - ["Image viewer", "webgateway", {"supported_objects": ["image"], "script_url": "webclient/javascript/ome.openwith_viewer.js"}]
@@ -130,16 +127,6 @@
 
         omero.web.viewer.view: omero_iviewer.views.index
         omero.web.mapr.config:
-          - menu: gene
-            config:
-              default:
-                - "Gene Symbol"
-              all:
-                - "Gene Symbol"
-                - "Gene Identifier"
-              ns:
-                - "openmicroscopy.org/mapr/gene"
-              label: "Gene"
           - menu: keyvalue
             config:
               default:
