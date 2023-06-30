@@ -248,24 +248,6 @@
         group: "omero-server"
         force: yes
 
-    - name: Add DropBox folder for trainer-1
-      become: yes
-      file:
-        path: /home/DropBox/trainer-1
-        state: directory
-        mode: 0755
-        recurse: yes
-        owner: "omero-server"
-        group: "omero-server"
-
-    - name: Add operating system user "importer1"
-      become: true
-      user:
-       name: "importer1"
-       state: present
-       groups: "{{ omero_server_system_managedrepo_group }}"
-       password: "{{ os_system_users_password | password_hash('sha512', 'ome') }}"
-
     - name: Allow managed repo group to login
       become: yes
       lineinfile:
@@ -424,8 +406,6 @@
       #omero.fs.importUsers: "fm1"
       omero.certificates.owner: "/C=UK/ST=Scotland/L=Dundee/O=OME"
       omero.client.icetransports: ssl,wss,tcp
-      omero.fs.watchDir: "/home/DropBox"
-      omero.fs.importArgs: "-T \"regex:^.*/(?<Container1>.*?)\""
       omero.db.poolsize: 60
       omero.jvmcfg.percent.blitz: 50
       omero.jvmcfg.percent.indexer: 20
